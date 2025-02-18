@@ -323,35 +323,35 @@
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("eZNpDhuXDQIee2RKe"); // Ganti dengan User ID dari EmailJS
-  })();
+    <script>
+      (function() {
+        emailjs.init("eZNpDhuXDQIee2RKe"); // Ganti dengan User ID dari EmailJS
+      })();
 
-  document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Mencegah reload halaman
+      document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Mencegah reload halaman
 
-    // Ambil data dari form
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
+        // Ambil data dari form
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message").value;
 
-    let templateParams = {
-      from_name: name,
-      from_email: email,
-      message: message
-    };
+        let templateParams = {
+          from_name: name,
+          from_email: email,
+          message: message
+        };
 
-    // Kirim email
-    emailjs.send("service_l51cu3q", "template_fhfgbfk", templateParams)
-      .then(function(response) {
-        alert("Email successfully sent!");
-        document.getElementById("contact-form").reset(); // Reset form setelah terkirim
-      }, function(error) {
-        alert("Failed to send email: " + JSON.stringify(error));
+        // Kirim email
+        emailjs.send("service_l51cu3q", "template_fhfgbfk", templateParams)
+          .then(function(response) {
+            alert("Email successfully sent!");
+            document.getElementById("contact-form").reset(); // Reset form setelah terkirim
+          }, function(error) {
+            alert("Failed to send email: " + JSON.stringify(error));
+          });
       });
-  });
-</script>
+    </script>
 
 
   </body>
