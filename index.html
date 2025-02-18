@@ -12,25 +12,23 @@
     <link rel="stylesheet" href="css/unicons.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="css/tooplate-style.css">
-    
-<!--
 
-Tooplate 2115 Marvel
 
-https://www.tooplate.com/view/2115-marvel
-
--->
   </head>
   <body>
 
     <!-- MENU -->
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><i class='uil uil-user'></i> Naufal</a>
-
+          <a class="navbar-brand" href="index.html"> 
+            <img src="images/project/miniprofil.png" alt="logo" style="height: 40px; width: 40px; border-radius: 50%; margin-right: 3%;"> Naufal
+        </a>
+        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -95,9 +93,10 @@ https://www.tooplate.com/view/2115-marvel
                 </div>
 
                 <div class="col-lg-5 col-md-12 col-12">
-                    <div class="about-image svg">
-                        <img src="images/undraw/undraw_programming_65t2.svg" class="img-fluid" alt="svg image">
-                    </div>
+                  <div class="about-image svg">
+                    <img src="images/project/miniprofil.png" class="img-fluid home-image" alt="home image">
+                </div>
+                
                 </div>
 
             </div>
@@ -261,9 +260,9 @@ https://www.tooplate.com/view/2115-marvel
                 </div>
 
                 <ul class="social-links">
-                     <li><a href="#" class="uil uil-dribbble" data-toggle="tooltip" data-placement="left" title="Dribbble"></a></li>
-                     <li><a href="#" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
-                     <li><a href="#" class="uil uil-youtube" data-toggle="tooltip" data-placement="left" title="Youtube"></a></li>
+                  <li><a href="https://www.tiktok.com/@scscscrt" class="fa-brands fa-tiktok" title="TikTok"></a></li>
+                  <li><a href="https://www.instagram.com/nizarae._/" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
+                     <li><a href="https://www.facebook.com/naufalzahlulnizar.naufalzahlulnizar" class="uil uil-facebook" data-toggle="tooltip" data-placement="left" title="facebook"></a></li>
                 </ul>
             </div>
           </div>
@@ -272,25 +271,23 @@ https://www.tooplate.com/view/2115-marvel
             <div class="contact-form">
               <h2 class="mb-4">Have any question?</h2>
 
-              <form action="" method="get">
+              <form id="contact-form">
                 <div class="row">
                   <div class="col-lg-6 col-12">
-                    <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name" id="name" required>
                   </div>
-
                   <div class="col-lg-6 col-12">
-                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                    <input type="email" class="form-control" name="email" placeholder="Email" id="email" required>
                   </div>
-
                   <div class="col-12">
-                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
+                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Message" required></textarea>
                   </div>
-
                   <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Send Button">
+                    <input type="submit" class="form-control submit-btn" value="Send Message">
                   </div>
                 </div>
               </form>
+              
             </div>
           </div>
 
@@ -325,6 +322,37 @@ https://www.tooplate.com/view/2115-marvel
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("eZNpDhuXDQIee2RKe"); // Ganti dengan User ID dari EmailJS
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Mencegah reload halaman
+
+    // Ambil data dari form
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    let templateParams = {
+      from_name: name,
+      from_email: email,
+      message: message
+    };
+
+    // Kirim email
+    emailjs.send("service_l51cu3q", "template_fhfgbfk", templateParams)
+      .then(function(response) {
+        alert("Email successfully sent!");
+        document.getElementById("contact-form").reset(); // Reset form setelah terkirim
+      }, function(error) {
+        alert("Failed to send email: " + JSON.stringify(error));
+      });
+  });
+</script>
+
 
   </body>
 </html>
